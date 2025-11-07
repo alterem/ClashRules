@@ -1,0 +1,56 @@
+rules:
+  - DOMAIN-SUFFIX,google.com,🚀 默认代理
+  - RULE-SET,private_domain,🎯 直连
+  - RULE-SET,proxylite,🚀 默认代理
+  - RULE-SET,youtube_domain,📹 YouTube
+  - RULE-SET,netflix_domain,🎥 NETFLIX
+  - RULE-SET,disney_domain,🎬 DISNEY
+  - RULE-SET,openai_domain,🤖 AI
+  - RULE-SET,gfw_domain,🚀 默认代理
+  - RULE-SET,geolocation-!cn,🚀 默认代理
+  - RULE-SET,cn_domain,🎯 直连
+  - RULE-SET,google_ip,🚀 默认代理,no-resolve
+  - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
+  - RULE-SET,cn_ip,🎯 直连
+  - MATCH,🐟 漏网之鱼
+
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+
+rule-providers: 
+  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
+  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/proxy.list"}
+  youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
+  openai_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs"}
+  gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
+  geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
+  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
+  
+  cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+
+proxy-groups:
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国自动, 🇺🇸 美国手动, 🇭🇰 香港自动, 🇭🇰 香港手动, 🇸🇬 新加坡自动, 🇸🇬 新加坡手动, 🇯🇵 日本自动, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 50, interval: 300}
+  - {name: 📹 YouTube, type: select, proxies: [🚀 默认代理, 🇺🇸 美国自动, 🇺🇸 美国手动, 🇭🇰 香港自动, 🇭🇰 香港手动, 🇸🇬 新加坡自动, 🇸🇬 新加坡手动, 🌐 全部节点]}
+  - {name: 🎥 NETFLIX, type: select, proxies: [🇹🇷 土耳其节点, 🇸🇬 新加坡自动, 🇸🇬 新加坡手动, 🇺🇸 美国自动, 🇺🇸 美国手动, 🌐 全部节点]}
+  - {name: 🎬 DISNEY, type: select, proxies: [🇸🇬 新加坡自动, 🇸🇬 新加坡手动, 🇹🇷 土耳其节点, 🇺🇸 美国自动, 🇺🇸 美国手动, 🌐 全部节点]}
+  - {name: 🤖 AI, type: select, proxies: [🇺🇸 美国自动, 🇺🇸 美国手动, 🇯🇵 日本自动, 🇸🇬 新加坡自动, 🇸🇬 新加坡手动, 🌐 全部节点, 🚀 默认代理]}
+  - {name: 🎯 直连, type: select, proxies: [DIRECT, 🚀 默认代理]}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🇺🇸 美国自动, 🇺🇸 美国手动, 🇭🇰 香港自动, 🇭🇰 香港手动, 🇸🇬 新加坡自动, 🇸🇬 新加坡手动, 🇯🇵 日本自动, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
+  
+  # 地区节点分组
+  - {name: 🇭🇰 香港自动, type: url-test, include-all: true, filter: "(?i)^(?=.*(港|hk|hongkong|hong kong))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$", tolerance: 50, interval: 300}
+  - {name: 🇭🇰 香港手动, type: select, include-all: true, filter: "(?i)^(?=.*(港|hk|hongkong|hong kong))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇺🇸 美国自动, type: url-test, include-all: true, filter: "(?i)^(?=.*(美|us|united states|unitedstates))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$", tolerance: 50, interval: 300}
+  - {name: 🇺🇸 美国手动, type: select, include-all: true, filter: "(?i)^(?=.*(美|us|united states|unitedstates))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇸🇬 新加坡自动, type: url-test, include-all: true, filter: "(?i)^(?=.*(新加坡|sg|singapore))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$", tolerance: 50, interval: 300}
+  - {name: 🇸🇬 新加坡手动, type: select, include-all: true, filter: "(?i)^(?=.*(新加坡|sg|singapore))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇯🇵 日本自动, type: url-test, include-all: true, filter: "(?i)^(?=.*(日本|jp|japan))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$", tolerance: 50, interval: 300}
+  - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(土耳其|tr|turkey))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🌐 全部节点, type: select, include-all: true}
