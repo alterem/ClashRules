@@ -1,0 +1,284 @@
+proxy-groups:
+  - name: 全部自动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+    type: url-test
+    include-all: true
+    interval: 300
+    tolerance: 50
+  - name: 美国手动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    include-all: true
+    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
+    type: select
+  - name: 美国自动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    include-all: true
+    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 香港自动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    include-all: true
+    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 香港手动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    include-all: true
+    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
+    type: select
+  - name: 新加坡自动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    include-all: true
+    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 新加坡手动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    include-all: true
+    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    type: select
+  - name: 土耳其手动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Turkey.png
+    include-all: true
+    filter: (?i)土耳其|TR|Turkey
+    type: select
+  - name: 日本自动
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    include-all: true
+    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
+    type: url-test
+    interval: 300
+    tolerance: 50
+  - name: 手动
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+  - name: 直连
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    type: select
+    proxies:
+      - DIRECT
+  - name: google
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
+    type: select
+    proxies:
+      - 全部自动
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+      - DIRECT
+  - name: apple
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
+    type: select
+    proxies:
+      - DIRECT
+      - 全部自动
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+  - name: telegram
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
+    type: select
+    proxies:
+      - 全部自动
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+      - DIRECT
+  - name: youtube
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
+    type: select
+    proxies:
+      - 全部自动
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+      - DIRECT
+  - name: netflix
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    type: select
+    proxies:
+      - 全部自动
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+      - DIRECT
+  - name: disneyplus
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Disney+.png
+    type: select
+    proxies:
+      - 全部自动
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+      - DIRECT
+  - name: ai
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
+    type: select
+    proxies:
+      - 美国自动
+      - 美国手动
+      - 全部自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+      - DIRECT
+  - name: 漏网之鱼
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - 全部自动
+      - DIRECT
+      - 美国手动
+      - 美国自动
+      - 香港自动
+      - 香港手动
+      - 新加坡自动
+      - 新加坡手动
+      - 土耳其手动
+      - 日本自动
+      - 手动
+
+rule-providers:
+  # 直连规则
+  direct:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+    path: ./ruleset/direct.txt
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+  
+  # 代理规则
+  proxy:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt
+    path: ./ruleset/proxy.txt
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+  
+  # 各服务规则
+  apple:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt
+    path: ./ruleset/apple.txt
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+    
+  google:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt
+    path: ./ruleset/google.txt
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+    
+  telegram:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.txt
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
+    
+  # 本地网络和中国 IP
+  lancidr:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
+    path: ./ruleset/lancidr.txt
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
+    
+  cncidr:
+    url: https://testingcf.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt
+    path: ./ruleset/cncidr.txt
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
+
+rules:
+  # 本地/局域网地址
+  - "RULE-SET,lancidr,直连"
+  
+  # 各服务分流
+  - "RULE-SET,apple,apple"
+  - "RULE-SET,google,google"
+  - "RULE-SET,telegram,telegram"
+  - "DOMAIN-SUFFIX,youtube.com,youtube"
+  - "DOMAIN-SUFFIX,googlevideo.com,youtube"
+  - "DOMAIN-SUFFIX,ytimg.com,youtube"
+  - "DOMAIN-SUFFIX,netflix.com,netflix"
+  - "DOMAIN-SUFFIX,netflix.net,netflix"
+  - "DOMAIN-SUFFIX,nflxext.com,netflix"
+  - "DOMAIN-SUFFIX,nflximg.net,netflix"
+  - "DOMAIN-SUFFIX,nflxso.net,netflix"
+  - "DOMAIN-SUFFIX,nflxvideo.net,netflix"
+  - "DOMAIN-SUFFIX,disneyplus.com,disneyplus"
+  - "DOMAIN-SUFFIX,disney-plus.net,disneyplus"
+  - "DOMAIN-SUFFIX,disneystreaming.com,disneyplus"
+  - "DOMAIN-SUFFIX,dssott.com,disneyplus"
+  - "DOMAIN-SUFFIX,bamgrid.com,disneyplus"
+  - "DOMAIN-SUFFIX,openai.com,ai"
+  - "DOMAIN-SUFFIX,ai.com,ai"
+  - "DOMAIN-SUFFIX,chatgpt.com,ai"
+  - "DOMAIN-SUFFIX,claude.ai,ai"
+  - "DOMAIN-SUFFIX,anthropic.com,ai"
+  
+  # 中国直连
+  - "RULE-SET,direct,直连"
+  - "RULE-SET,cncidr,直连"
+  - "GEOIP,CN,直连"
+  
+  # 需要代理的列表
+  - "RULE-SET,proxy,漏网之鱼"
+  
+  # 最终规则
+  - "MATCH,漏网之鱼"
