@@ -42,8 +42,8 @@ proxy-groups:
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
   
   # 地区节点分组
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)^(?=.*(港|hk|hongkong|hong kong))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
-  - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)^(?=.*(美|us|united states|unitedstates))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
-  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)^(?=.*(新加坡|sg|singapore))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
-  - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(土耳其|tr|turkey))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)^(?=.*(港|hk|HK|hongkong|hong kong))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)^(?=.*(美|us|US|united states|unitedstates))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)^(?=.*(新加坡|sg|SG|singapore))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(土耳其|tr|TR|turkey))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
