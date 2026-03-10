@@ -1,5 +1,8 @@
 rules:
   - DOMAIN-SUFFIX,google.com,🚀 默认代理
+  - DOMAIN-SUFFIX,iqiyi.com,🛑 屏蔽
+  - DOMAIN-SUFFIX,adobestats.io,🛑 屏蔽
+  - DOMAIN-SUFFIX,adobe.io,🛑 屏蔽
   - RULE-SET,private_domain,🎯 直连
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,youtube_domain,📹 YouTube
@@ -40,6 +43,7 @@ proxy-groups:
   - {name: 🎬 DISNEY, type: select, proxies: [🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇺🇸 美国节点, 🌐 全部节点]}
   - {name: 🎯 直连, type: select, proxies: [DIRECT, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
+  - {name: 🛑 屏蔽, type: select, proxies: [REJECT]}
   
   # 地区节点分组
   - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)^(?=.*(港|hk|HK|hongkong|hong kong))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
