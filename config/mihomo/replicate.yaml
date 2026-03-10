@@ -3,6 +3,7 @@ rules:
   - DOMAIN-SUFFIX,iqiyi.com,🛑 屏蔽
   - DOMAIN-SUFFIX,adobestats.io,🛑 屏蔽
   - DOMAIN-SUFFIX,adobe.io,🛑 屏蔽
+  - DOMAIN-SUFFIX,appstorrent.ru,🎯 直连
   - RULE-SET,private_domain,🎯 直连
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,youtube_domain,📹 YouTube
