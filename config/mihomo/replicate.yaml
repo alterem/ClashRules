@@ -36,7 +36,7 @@ rule-providers:
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
 
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇳🇬 尼日利亚节点, 🇹🇼 台湾节点, 🇯🇵 日本节点,🇲🇾 马来西亚节点, 🌐 全部节点, DIRECT]}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 50, interval: 300}
   - {name: 📹 YouTube, type: select, proxies: [🚀 默认代理, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🌐 全部节点]}
   - {name: 🎥 NETFLIX, type: select, proxies: [🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🌐 全部节点]}
@@ -50,4 +50,8 @@ proxy-groups:
   - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇺🇸|美|美国|united[ _-]*states|(?:^|[^A-Za-z])usa(?:[^A-Za-z]|$)|(?:^|[^A-Za-z])us(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
   - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇸🇬|新加坡|singapore|(?:^|[^A-Za-z])sg(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
   - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇹🇷|土耳其|turkey|türkiye|turkiye|(?:^|[^A-Za-z])tr(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇳🇬 尼日利亚节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇳🇬|尼日利亚|nigeria|naija|(?:^|[^A-Za-z])ng(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇹🇼 台湾节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇹🇼|台湾|台灣|臺灣|taiwan|台北|臺北|高雄|taipei|kaohsiung|(?:^|[^A-Za-z])tw(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇯🇵|日本|japan|东京|大阪|tokyo|osaka|(?:^|[^A-Za-z])jp(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇲🇾 马来西亚节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇲🇾|马来西亚|馬來西亞|malaysia|吉隆坡|kuala[ _-]*lumpur|(?:^|[^A-Za-z])my(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
