@@ -46,8 +46,8 @@ proxy-groups:
   - {name: 🛑 屏蔽, type: select, proxies: [REJECT, DIRECT, 🚀 默认代理]}
   
   # 地区节点分组
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)^(?=.*(港|hk|HK|hongkong|hong kong))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
-  - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)^(?=.*(美|us|US|united states|unitedstates))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
-  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)^(?=.*(新加坡|sg|SG|singapore))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
-  - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(土耳其|tr|TR|turkey))(?!.*(回国|校园|游戏|教育|久虚|cn)).*$"}
+  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇭🇰|港|香港|hong[ _-]*kong|(?:^|[^A-Za-z])hk(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇺🇸|美|美国|united[ _-]*states|(?:^|[^A-Za-z])usa(?:[^A-Za-z]|$)|(?:^|[^A-Za-z])us(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇸🇬|新加坡|singapore|(?:^|[^A-Za-z])sg(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+  - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇹🇷|土耳其|turkey|türkiye|turkiye|(?:^|[^A-Za-z])tr(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
