@@ -1,9 +1,10 @@
 rules:
-  - DOMAIN-SUFFIX,google.com,🚀 默认代理
+  - DOMAIN-SUFFIX,bing.com,🚀 默认代理
   - RULE-SET,reject_tracker,🛑 屏蔽
   - RULE-SET,private_domain,🎯 直连
   - RULE-SET,proxy_tracker,🚀 默认代理
   - RULE-SET,direct_tracker,🎯 直连
+  - RULE-SET,google_domain,🚀 默认代理
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,disney_domain,🎬 DISNEY
@@ -25,6 +26,7 @@ rule-providers:
   proxy_tracker: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/proxy.list"}
   direct_tracker: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/direct.list"}
   reject_tracker: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/reject.list"}
+  google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
