@@ -47,17 +47,17 @@ DOMAIN-SUFFIX,bdtjrcv.com
 DOMAIN-SUFFIX,bdstatic.com
 
 # ===== 关键字拦截（轻度，误杀相对可控）=====
-DOMAIN-KEYWORD,analytics
-DOMAIN-KEYWORD,track
-DOMAIN-KEYWORD,trace
-DOMAIN-KEYWORD,collect
-DOMAIN-KEYWORD,apm
-DOMAIN-KEYWORD,crash
-DOMAIN-KEYWORD,beacon
+# DOMAIN-KEYWORD,analytics
+# DOMAIN-KEYWORD,track
+# DOMAIN-KEYWORD,trace
+# DOMAIN-KEYWORD,collect
+# DOMAIN-KEYWORD,apm
+# DOMAIN-KEYWORD,crash
+# DOMAIN-KEYWORD,beacon
 
 # ===== URL-REGEX 替代：按关键字兜底 =====
-DOMAIN-KEYWORD,log
-DOMAIN-KEYWORD,report
-DOMAIN-KEYWORD,monitor
-DOMAIN-KEYWORD,event
-DOMAIN-KEYWORD,behavior
+# DOMAIN-KEYWORD,log
+# DOMAIN-KEYWORD,report
+# DOMAIN-KEYWORD,monitor
+# DOMAIN-KEYWORD,event
+# DOMAIN-KEYWORD,behavior
