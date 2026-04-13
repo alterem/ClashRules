@@ -1,6 +1,6 @@
 # 域名后缀匹配
 # 爱奇艺 埋点 / 请求
-DOMAIN-SUFFIX,iqiyi.com,REJECT
+#DOMAIN-SUFFIX,iqiyi.com,REJECT
 
 # Adobe 统计 / 服务上报
 DOMAIN-SUFFIX,adobestats.io,REJECT
@@ -8,43 +8,43 @@ DOMAIN-SUFFIX,adobe.io,REJECT
 
 # ===== 字节系 / 腾讯 / 友盟 等主流埋点 SDK =====
 # 字节跳动（抖音 / 今日头条 / TikTok）
-DOMAIN-SUFFIX,log.snssdk.com
-DOMAIN-SUFFIX,mon.snssdk.com
-DOMAIN-SUFFIX,byteoversea.com
+#DOMAIN-SUFFIX,log.snssdk.com
+#DOMAIN-SUFFIX,mon.snssdk.com
+#DOMAIN-SUFFIX,byteoversea.com
 
 # 腾讯 SDK
-DOMAIN-SUFFIX,log.tbs.qq.com
-DOMAIN-SUFFIX,beacon.qq.com
-DOMAIN-SUFFIX,mta.qq.com
+#DOMAIN-SUFFIX,log.tbs.qq.com
+#DOMAIN-SUFFIX,beacon.qq.com
+#DOMAIN-SUFFIX,mta.qq.com
 
 # 友盟 SDK
-DOMAIN-SUFFIX,umeng.com
-DOMAIN-SUFFIX,umengcloud.com
-DOMAIN-SUFFIX,alog.umeng.com
+#DOMAIN-SUFFIX,umeng.com
+#DOMAIN-SUFFIX,umengcloud.com
+#DOMAIN-SUFFIX,alog.umeng.com
 
 # 小米 / 拼多多 / 快手 / 美团
-DOMAIN-SUFFIX,mistat.xiaomi.com
-DOMAIN-SUFFIX,tracking.miui.com
-DOMAIN-SUFFIX,log-sdk.ksapisrv.com
-DOMAIN-SUFFIX,applog.pinduoduo.com
-DOMAIN-SUFFIX,apm.meituan.com
+#DOMAIN-SUFFIX,mistat.xiaomi.com
+#DOMAIN-SUFFIX,tracking.miui.com
+#DOMAIN-SUFFIX,log-sdk.ksapisrv.com
+#DOMAIN-SUFFIX,applog.pinduoduo.com
+#DOMAIN-SUFFIX,apm.meituan.com
 
 # ===== 通用 tracking / analytics 平台 =====
-DOMAIN-SUFFIX,google-analytics.com
-DOMAIN-SUFFIX,googletagmanager.com
-DOMAIN-SUFFIX,googletagservices.com
-DOMAIN-SUFFIX,facebook-analytics.net
-DOMAIN-SUFFIX,hotjar.com
-DOMAIN-SUFFIX,segment.io
-DOMAIN-SUFFIX,mixpanel.com
-DOMAIN-SUFFIX,matomo.cloud
-DOMAIN-SUFFIX,stats.wp.com
+#DOMAIN-SUFFIX,google-analytics.com
+#DOMAIN-SUFFIX,googletagmanager.com
+#DOMAIN-SUFFIX,googletagservices.com
+#DOMAIN-SUFFIX,facebook-analytics.net
+#DOMAIN-SUFFIX,hotjar.com
+#DOMAIN-SUFFIX,segment.io
+#DOMAIN-SUFFIX,mixpanel.com
+#DOMAIN-SUFFIX,matomo.cloud
+#DOMAIN-SUFFIX,stats.wp.com
 
 # ===== 国内网页统计平台（H5 / 小程序 / 站点）=====
-DOMAIN-SUFFIX,cnzz.com
-DOMAIN-SUFFIX,51.la
-DOMAIN-SUFFIX,bdtjrcv.com
-DOMAIN-SUFFIX,bdstatic.com
+#DOMAIN-SUFFIX,cnzz.com
+#DOMAIN-SUFFIX,51.la
+#DOMAIN-SUFFIX,bdtjrcv.com
+#DOMAIN-SUFFIX,bdstatic.com
 
 # ===== 关键字拦截（轻度，误杀相对可控）=====
 # DOMAIN-KEYWORD,analytics
