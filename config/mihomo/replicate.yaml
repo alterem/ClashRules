@@ -1,4 +1,16 @@
+hosts:
+  maven.one: 192.168.6.16
+  r.npmjs.one: 192.168.6.16
+  git.one: 192.168.30.152
+  jira.one: 192.168.6.16
+  wiki.one: 192.168.6.16
 rules:
+  - DOMAIN,maven.one,DIRECT
+  - DOMAIN,r.npmjs.one,DIRECT
+  - DOMAIN,git.one,DIRECT
+  - DOMAIN,jira.one,DIRECT
+  - DOMAIN,wiki.one,DIRECT
+  - DOMAIN-SUFFIX,igotgames.net,DIRECT
   - DOMAIN-SUFFIX,bing.com,🚀 默认代理
   - RULE-SET,reject_tracker,🛑 屏蔽
   - RULE-SET,private_domain,🎯 直连
