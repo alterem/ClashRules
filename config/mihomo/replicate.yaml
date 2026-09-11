@@ -4,6 +4,7 @@ hosts:
   git.one: 192.168.30.152
   jira.one: 192.168.6.16
   wiki.one: 192.168.6.16
+
 rules:
   - DOMAIN,maven.one,DIRECT
   - DOMAIN,r.npmjs.one,DIRECT
@@ -14,12 +15,14 @@ rules:
   - DOMAIN-SUFFIX,bing.com,🚀 默认代理
   - RULE-SET,reject_tracker,🛑 屏蔽
   - RULE-SET,private_domain,🎯 直连
+  - RULE-SET,private_ip,🎯 直连,no-resolve
   - RULE-SET,proxy_tracker,🚀 默认代理
   - RULE-SET,direct_tracker,🎯 直连
-  - RULE-SET,google_domain,🚀 默认代理
+  # 流媒体必须排在 google 之前：geosite:google 已包含 youtube 域名，否则 YouTube 分组不会命中
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,disney_domain,🎬 DISNEY
+  - RULE-SET,google_domain,🚀 默认代理
   - RULE-SET,gfw_domain,🚀 默认代理
   - RULE-SET,geolocation-!cn,🚀 默认代理
   - RULE-SET,cn_domain,🎯 直连
@@ -33,50 +36,51 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 
-rule-providers: 
-  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  proxy_tracker: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/proxy.list"}
-  direct_tracker: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/direct.list"}
-  reject_tracker: { <<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/reject.list"}
-  google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
-  youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
-  netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
-  disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
-  gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
-  geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
-  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
-  cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
-  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
-  netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+rule-providers:
+  private_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
+  private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
+  proxy_tracker: {<<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/proxy.list"}
+  direct_tracker: {<<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/direct.list"}
+  reject_tracker: {<<: *class, url: "https://raw.githubusercontent.com/alterem/ClashRules/refs/heads/main/reject.list"}
+  google_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  youtube_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  netflix_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  disney_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
+  gfw_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
+  geolocation-!cn: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
+  cn_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
+  cn_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  google_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  netflix_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+
+# 分组公共片段（用法同 rule-anchor）
+# exclude：统一排除 回国/校园/游戏/教育 线路，以及 套餐/到期/官网 这类信息节点
+#          cn 仅在后面不跟字母数字时才排除，避免误杀 CN2 / CN2 GIA 线路
+group-anchor:
+  exclude: &exclude "(?i)回[国國]|校[园園]|[游遊][戏戲]|教育|剩[余餘]|到期|[过過]期|官[网網]|套餐|重置|[订訂][阅閱]|expire|(?:^|[^A-Za-z])cn(?:[^A-Za-z0-9]|$)"
+  region: &region {type: select, include-all: true, exclude-filter: *exclude}
+  us: &us "(?i)🇺🇸|美|united[ _-]*states|(?:^|[^A-Za-z])usa?(?:[^A-Za-z]|$)"
 
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇳🇬 尼日利亚节点, 🇹🇼 台湾节点, 🇯🇵 日本节点,🇲🇾 马来西亚节点, 🌐 全部节点, DIRECT]}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 50, interval: 300}
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇳🇬 尼日利亚节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇲🇾 马来西亚节点, 🌐 全部节点, DIRECT]}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-filter: *exclude, tolerance: 50, interval: 300}
   - {name: 📹 YouTube, type: select, proxies: [🚀 默认代理, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🌐 全部节点]}
   - {name: 🎥 NETFLIX, type: select, proxies: [🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🌐 全部节点]}
   - {name: 🎬 DISNEY, type: select, proxies: [🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🌐 全部节点]}
   - {name: 🎯 直连, type: select, proxies: [DIRECT, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
   - {name: 🛑 屏蔽, type: select, proxies: [REJECT, DIRECT, 🚀 默认代理]}
-  
-  # 地区节点分组
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇭🇰|港|香港|hong[ _-]*kong|(?:^|[^A-Za-z])hk(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
-  - name: 🇺🇸 美国节点
-    type: select
-    include-all: true
-    filter: "(?i)🇺🇸|美国|美|united[ _-]*states|(^|[^A-Za-z])usa([^A-Za-z]|$)|(^|[^A-Za-z])us([^A-Za-z]|$)"
-    exclude-filter: "(?i)回国|校园|游戏|教育|(^|[^A-Za-z])cn([^A-Za-z]|$)"
-  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇸🇬|新加坡|singapore|(?:^|[^A-Za-z])sg(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
-  - {name: 🇹🇷 土耳其节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇹🇷|土耳其|turkey|türkiye|turkiye|(?:^|[^A-Za-z])tr(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
-  - {name: 🇳🇬 尼日利亚节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇳🇬|尼日利亚|nigeria|naija|(?:^|[^A-Za-z])ng(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
-  - {name: 🇹🇼 台湾节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇹🇼|台湾|台灣|臺灣|taiwan|台北|臺北|高雄|taipei|kaohsiung|(?:^|[^A-Za-z])tw(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇯🇵|日本|japan|东京|大阪|tokyo|osaka|(?:^|[^A-Za-z])jp(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
-  - {name: 🇲🇾 马来西亚节点, type: select, include-all: true, filter: "(?i)^(?=.*(?:🇲🇾|马来西亚|馬來西亞|malaysia|吉隆坡|kuala[ _-]*lumpur|(?:^|[^A-Za-z])my(?:[^A-Za-z]|$)))(?!.*(?:回国|校园|游戏|教育|(?:^|[^A-Za-z])cn(?:[^A-Za-z]|$))).*$"}
+
+  # 地区节点分组：filter 只负责"包含"，排除逻辑统一走 exclude-filter（见 group-anchor）
+  - {<<: *region, name: 🇭🇰 香港节点, filter: "(?i)🇭🇰|港|hong[ _-]*kong|(?:^|[^A-Za-z])hkg?(?:[^A-Za-z]|$)"}
+  - {<<: *region, name: 🇺🇸 美国节点, filter: *us}
+  - {<<: *region, name: 🇸🇬 新加坡节点, filter: "(?i)🇸🇬|新加坡|[狮獅]城|singapore|(?:^|[^A-Za-z])sgp?(?:[^A-Za-z]|$)"}
+  - {<<: *region, name: 🇹🇷 土耳其节点, filter: "(?i)🇹🇷|土耳其|t[uü]rk(?:ey|iye)|(?:^|[^A-Za-z])tr(?:[^A-Za-z]|$)"}
+  - {<<: *region, name: 🇳🇬 尼日利亚节点, filter: "(?i)🇳🇬|尼日利亚|奈及利亞|nigeria|naija|(?:^|[^A-Za-z])ng(?:[^A-Za-z]|$)"}
+  - {<<: *region, name: 🇹🇼 台湾节点, filter: "(?i)🇹🇼|[台臺][湾灣]|[台臺]北|高雄|taiwan|taipei|kaohsiung|(?:^|[^A-Za-z])tw(?:[^A-Za-z]|$)"}
+  - {<<: *region, name: 🇯🇵 日本节点, filter: "(?i)🇯🇵|日本|[东東]京|大阪|japan|tokyo|osaka|(?:^|[^A-Za-z])jpn?(?:[^A-Za-z]|$)"}
+  - {<<: *region, name: 🇲🇾 马来西亚节点, filter: "(?i)🇲🇾|[马馬][来來]西[亚亞]|大[马馬]|吉隆坡|malaysia|kuala[ _-]*lumpur|(?:^|[^A-Za-z])my(?:[^A-Za-z]|$)"}
   - {name: 🌐 全部节点, type: select, include-all: true}
 
-  # 特殊节点
-  - name: 🇺🇸 美国流媒体
-    type: select
-    include-all: true
-    filter: "(?i)🇺🇸|美国|美|united[ _-]*states|(^|[^A-Za-z])usa([^A-Za-z]|$)|(^|[^A-Za-z])us([^A-Za-z]|$)"
-    exclude-filter: "(?i)回国|校园|游戏|教育|(^|[^A-Za-z])cn([^A-Za-z]|$)"
+  # 特殊节点：与 美国节点 同一候选池，单独选一个专供流媒体
+  - {<<: *region, name: 🇺🇸 美国流媒体, filter: *us}
