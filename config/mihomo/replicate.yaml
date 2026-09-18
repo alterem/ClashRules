@@ -66,10 +66,10 @@ group-anchor:
 proxy-groups:
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇳🇬 尼日利亚节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇲🇾 马来西亚节点, 🌐 全部节点, DIRECT]}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-filter: *exclude, tolerance: 50, interval: 300}
-  - {name: 📹 YOUTUBE, type: select, proxies: [🚀 默认代理, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🌐 全部节点]}
-  - {name: 🎥 NETFLIX, type: select, proxies: [🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🌐 全部节点]}
-  - {name: 🎵 SPOTIFY, type: select, proxies: [🇺🇸 美国流媒体, 🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🌐 全部节点]}
-  - {name: 🎬 DISNEY, type: select, proxies: [🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🌐 全部节点]}
+  - {name: 📹 YOUTUBE, type: select, proxies: [🇺🇸 美国流媒体, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🚀 默认代理, 🇺🇸 美国节点, 🌐 全部节点]}
+  - {name: 🎥 NETFLIX, type: select, proxies: [🇺🇸 美国流媒体, 🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🚀 默认代理, 🇺🇸 美国节点, 🌐 全部节点]}
+  - {name: 🎵 SPOTIFY, type: select, proxies: [🇺🇸 美国流媒体, 🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🚀 默认代理, 🇺🇸 美国节点, 🌐 全部节点]}
+  - {name: 🎬 DISNEY, type: select, proxies: [🇺🇸 美国流媒体, 🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🚀 默认代理, 🇺🇸 美国节点, 🌐 全部节点]}
   - {name: 🎯 直连, type: select, proxies: [DIRECT, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
   - {name: 🛑 屏蔽, type: select, proxies: [REJECT, DIRECT, 🚀 默认代理]}
