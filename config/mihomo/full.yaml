@@ -5,9 +5,10 @@ rules:
   - RULE-SET,private_ip,🎯 直连,no-resolve
   - RULE-SET,proxy_tracker,🚀 默认代理
   - RULE-SET,direct_tracker,🎯 直连
-  # 流媒体必须排在 google 之前：geosite:google 已包含 youtube 域名，否则 YouTube 分组不会命中
-  - RULE-SET,youtube_domain,📹 YouTube
+  # 流媒体必须排在 google 之前：geosite:google 已包含 youtube 域名，否则 YOUTUBE 分组不会命中
+  - RULE-SET,youtube_domain,📹 YOUTUBE
   - RULE-SET,netflix_domain,🎥 NETFLIX
+  - RULE-SET,spotify_domain,🎵 SPOTIFY
   - RULE-SET,disney_domain,🎬 DISNEY
   - RULE-SET,google_domain,🚀 默认代理
   - RULE-SET,gfw_domain,🚀 默认代理
@@ -32,6 +33,7 @@ rule-providers:
   google_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   youtube_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   netflix_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  spotify_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"}
   disney_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
   gfw_domain: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
   geolocation-!cn: {<<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
@@ -51,8 +53,9 @@ group-anchor:
 proxy-groups:
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇳🇬 尼日利亚节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇲🇾 马来西亚节点, 🌐 全部节点, DIRECT]}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-filter: *exclude, tolerance: 50, interval: 300}
-  - {name: 📹 YouTube, type: select, proxies: [🚀 默认代理, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🌐 全部节点]}
+  - {name: 📹 YOUTUBE, type: select, proxies: [🚀 默认代理, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🌐 全部节点]}
   - {name: 🎥 NETFLIX, type: select, proxies: [🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🌐 全部节点]}
+  - {name: 🎵 SPOTIFY, type: select, proxies: [🇺🇸 美国流媒体, 🇹🇷 土耳其节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🌐 全部节点]}
   - {name: 🎬 DISNEY, type: select, proxies: [🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🇺🇸 美国节点, 🇺🇸 美国流媒体, 🌐 全部节点]}
   - {name: 🎯 直连, type: select, proxies: [DIRECT, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 默认代理, ♻️ 自动选择, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇹🇷 土耳其节点, 🌐 全部节点, DIRECT]}
