@@ -17,6 +17,7 @@ rules:
   - DOMAIN,git.one,DIRECT
   - DOMAIN,jira.one,DIRECT
   - DOMAIN,wiki.one,DIRECT
+  - DOMAIN-SUFFIX,ce-dev.shsnc.com,DIRECT
   - DOMAIN-SUFFIX,igotgames.net,DIRECT
   - DOMAIN-SUFFIX,bing.com,🚀 默认代理
   - RULE-SET,reject_tracker,🛑 屏蔽
