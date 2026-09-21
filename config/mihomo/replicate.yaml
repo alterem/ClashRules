@@ -4,6 +4,12 @@ hosts:
   git.one: 192.168.30.152
   jira.one: 192.168.6.16
   wiki.one: 192.168.6.16
+  aios-prod.ce-dev.shsnc.com: 192.168.101.10
+  keycloak-prod.ce-dev.shsnc.com: 192.168.101.10
+  aios-demo.ce-dev.shsnc.com: 192.168.101.10
+  keycloak-demo.ce-dev.shsnc.com: 192.168.101.10
+  aios.ce-dev.shsnc.com: 192.168.101.10
+  keycloak.ce-dev.shsnc.com: 192.168.101.10
 
 rules:
   - DOMAIN,maven.one,DIRECT
